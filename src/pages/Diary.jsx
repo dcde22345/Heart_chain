@@ -1,31 +1,60 @@
 import React, { useState } from 'react';
-import { Container, Button, Form, Card } from 'react-bootstrap';
+import { Container, Button, Form, Card, ListGroup } from 'react-bootstrap';
 
-const Diary = () => {
-  const [entry, setEntry] = useState('');
+const Chatbot = () => {
+  const [messages, setMessages] = useState([]);
+  const [userInput, setUserInput] = useState('');
 
-  const handleSave = () => {
-    alert('您的匿名日記已保存');
+  const handleSend = () => {
+    if (!userInput.trim()) return;
+
+    // 使用者輸入的訊息
+    const userMessage = { sender: 'user', text: userInput };
+
+    // 模擬機器人的回應
+    const botMessage = {
+      sender: 'bot',
+      text: `${userInput}`,
+    };
+
+    // 更新訊息列表
+    setMessages([...messages, userMessage, botMessage]);
+
+    // 清空輸入框
+    setUserInput('');
   };
 
   return (
     <Container className="my-5">
       <Card>
-        <Card.Header>匿名日記</Card.Header>
+        <Card.Header>諮商聊天室</Card.Header>
         <Card.Body>
+          <ListGroup className="chat-window mb-3" style={{ height: '300px', overflowY: 'scroll' }}>
+            {messages.map((message, index) => (
+              <ListGroup.Item
+                key={index}
+                className={message.sender === 'user' ? 'text-end' : 'text-start'}
+                style={{
+                  backgroundColor: message.sender === 'user' ? '#d1e7dd' : '#f8d7da',
+                  borderRadius: '10px',
+                  margin: '5px 0',
+                }}
+              >
+                {message.text}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
           <Form>
-            <Form.Group controlId="diaryEntry">
-              <Form.Label>寫下您的日記：</Form.Label>
+            <Form.Group controlId="userInput">
               <Form.Control
-                as="textarea"
-                rows={5}
-                placeholder="輸入內容..."
-                value={entry}
-                onChange={(e) => setEntry(e.target.value)}
+                type="text"
+                placeholder="輸入訊息..."
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
               />
             </Form.Group>
-            <Button variant="success" className="mt-3" onClick={handleSave}>
-              保存日記
+            <Button variant="primary" className="mt-3" onClick={handleSend}>
+              發送
             </Button>
           </Form>
         </Card.Body>
@@ -34,4 +63,4 @@ const Diary = () => {
   );
 };
 
-export default Diary;
+export default Chatbot;

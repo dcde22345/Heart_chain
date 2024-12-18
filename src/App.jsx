@@ -18,25 +18,30 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
     return (
         <TokenProvider>
-            <Router>
-                <Navbar bg="dark" variant="dark" expand="lg">
-                    <Container>
-                        <Navbar.Brand href="/">政心鏈</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
-                                <Nav.Link as={Link} to="/counsel">匿名諮詢</Nav.Link>
-                                <Nav.Link as={Link} to="/diary">匿名日記</Nav.Link>
-                                <Nav.Link as={Link} to="/taskPanel">心理代幣</Nav.Link>
-                                <Nav.Link as={Link} to="/taskRun">進行任務</Nav.Link>
-                                <Nav.Link as={Link} to="/userInfo">個人資訊</Nav.Link>
-                                <Nav.Link as={Link} to="/coupon">折價券</Nav.Link>
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
-
-                <Container className="mt-4">
+            <Navbar
+                fixed="bottom"
+                style={{
+                    backgroundColor: "#f8f5f2",
+                    boxShadow: "0 -2px 5px rgba(0, 0, 0, 0.1)",
+                }}
+            >
+                <Nav className="w-100 d-flex justify-content-around">
+                    <Nav.Link href="/" style={{ color: "#666" }}>
+                        主頁
+                    </Nav.Link>
+                    <Nav.Link href="/diary" style={{ color: "#666" }}>
+                        聊天
+                    </Nav.Link>
+                    <Nav.Link href="/counsel" style={{ color: "#666" }}>
+                        諮詢
+                    </Nav.Link>
+                    <Nav.Link href="/userInfo" style={{ color: "#666" }}>
+                        個人
+                    </Nav.Link>
+                </Nav>
+            </Navbar>
+            <Container className="mt-3">
+                <Router>
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/counsel" element={<Counsel />} />
@@ -46,8 +51,8 @@ function App() {
                         <Route path="/userInfo" element={<UserInfo />} />
                         <Route path="/coupon" element={<CouponPage />} />
                     </Routes>
-                </Container>
-            </Router>
+                </Router>
+            </Container>
         </TokenProvider>
     );
 }

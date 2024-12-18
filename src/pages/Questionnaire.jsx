@@ -11,7 +11,7 @@ const Questionnaire = () => {
   return (
     <Container className="my-5">
       <Card>
-        <Card.Header>問卷 for 了解</Card.Header>
+        <Card.Header>問卷</Card.Header>
         <Card.Body>
           <Form>
             <Form.Group controlId="questionnaire">
