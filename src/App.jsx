@@ -8,12 +8,11 @@ import {
     Home,
     MeetingRoom,
     UserInfo,
-    TaskPanel,
-    TaskRun,
-    CouponPage,
+    Tasks,
 } from "./pages/PageRouter";
 import { TokenProvider } from "./TokenContext"; // 引入 TokenProvider
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css"
 
 function App() {
     return (
@@ -32,8 +31,8 @@ function App() {
                     <Nav.Link href="/diary" style={{ color: "#666" }}>
                         聊天
                     </Nav.Link>
-                    <Nav.Link href="/counsel" style={{ color: "#666" }}>
-                        諮詢
+                    <Nav.Link href="/tasks" style={{ color: "#666" }}>
+                        任務
                     </Nav.Link>
                     <Nav.Link href="/userInfo" style={{ color: "#666" }}>
                         個人
@@ -45,11 +44,11 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/counsel" element={<Counsel />} />
+                        <Route path="/meeting-room" element={<MeetingRoom />} />
                         <Route path="/diary" element={<Diary />} />
-                        <Route path="/taskPanel" element={<TaskPanel />} />
-                        <Route path="/taskRun" element={<TaskRun />} />
+                        <Route path="/tasks" element={<Tasks />} />
                         <Route path="/userInfo" element={<UserInfo />} />
-                        <Route path="/coupon" element={<CouponPage />} />
+
                     </Routes>
                 </Router>
             </Container>

@@ -1,0 +1,16 @@
+.btn-primary {
+    background-color: #A4D1C3 !important;
+    border-color: #A4D1C3 !important;
+    color: #ffffff !important; /* 設定文字顏色 */
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #8fb9aa !important; /* 滑鼠懸停的顏色 */
+    border-color: #8fb9aa !important;
+}
+
+.bg-primary {
+    background-color: #A4D1C3 !important
+}
+

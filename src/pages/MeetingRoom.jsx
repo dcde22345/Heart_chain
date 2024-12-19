@@ -79,11 +79,12 @@ const MeetingRoom = () => {
       fluid
       className="d-flex flex-column align-items-center vh-100 bg-light"
     >
-        {/* 攝影機選擇器 */}
+      123132
+        攝影機選擇器
       <Card className="mt-4 p-3 shadow-sm" style={{ width: "100%", maxWidth: "500px" }}>
         <Card.Title className="text-center fw-bold">選擇攝影機</Card.Title>
         <Form.Select
-          value={selectedDeviceId}
+          value={selectedDeviceId}    
           onChange={(e) => setSelectedDeviceId(e.target.value)}
         >
           {devices.map((device) => (
@@ -91,7 +92,7 @@ const MeetingRoom = () => {
               {device.label || `攝影機 ${device.deviceId}`}
             </option>
           ))}
-        </Form.Select>
+        </Form.Select>      
       </Card>
       
       {/* 諮商師鏡頭 */}

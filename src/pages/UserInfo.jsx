@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Card, ListGroup, Container } from "react-bootstrap";
 import { TokenContext } from "../TokenContext";
+import Coupons from "../components/Coupons"
 
 function UserInfo() {
     const { tokenBalance } = useContext(TokenContext); // 使用 Context
@@ -13,9 +14,12 @@ function UserInfo() {
     
 
     return (
-        <Container className="mt-5">
+        <Container className="my-5">
+            {/* Profile */}
+            <Container>
+            <h1 className="mb-4 text-center">個人資料</h1>
             <Card>
-                <Card.Header>個人資訊</Card.Header>
+                <Card.Header>錢包與餘額</Card.Header>
                 <ListGroup variant="flush">
                     <ListGroup.Item>錢包位址: {userInfo.walletAddress}</ListGroup.Item>
                     <ListGroup.Item>餘額: {tokenBalance} 心理代幣</ListGroup.Item>
@@ -29,6 +33,10 @@ function UserInfo() {
                     </ListGroup.Item>
                 </ListGroup>
             </Card>
+            </Container>
+
+            {/* coupons */}
+            <Coupons />
         </Container>
     );
 }

@@ -1,15 +1,49 @@
 import React, { useState, useContext } from "react";
-import { Container, Card, Button, Row, Col, Modal, Badge } from "react-bootstrap";
+import {
+    Container,
+    Card,
+    Button,
+    Row,
+    Col,
+    Modal,
+    Badge,
+} from "react-bootstrap";
 import { TokenContext } from "../TokenContext"; // 引入心理代幣的全局狀態管理
 
-function CouponPage() {
+function Coupons() {
+    const [barcodeValue, setBarcodeValue] = useState(null);
+
     const { tokenBalance, consumeTokens } = useContext(TokenContext); // 取得代幣餘額與扣除方法
 
     const [coupons] = useState([
-        { id: 1, store: "商家 A", description: "滿100元折20元", expiry: "2024/12/31", cost: 5 },
-        { id: 2, store: "商家 B", description: "購買飲料第二杯半價", expiry: "2024/12/31", cost: 3 },
-        { id: 3, store: "商家 C", description: "消費滿500元送50元代幣", expiry: "2024/12/31", cost: 7 },
-        { id: 4, store: "商家 D", description: "所有商品享 10% 折扣", expiry: "2024/12/31", cost: 10 },
+        {
+            id: 1,
+            store: "商家 A",
+            description: "滿100元折20元",
+            expiry: "2024/12/31",
+            cost: 5,
+        },
+        {
+            id: 2,
+            store: "商家 B",
+            description: "購買飲料第二杯半價",
+            expiry: "2024/12/31",
+            cost: 3,
+        },
+        {
+            id: 3,
+            store: "商家 C",
+            description: "消費滿500元送50元",
+            expiry: "2024/12/31",
+            cost: 7,
+        },
+        {
+            id: 4,
+            store: "商家 D",
+            description: "所有商品享 10% 折扣",
+            expiry: "2024/12/31",
+            cost: 10,
+        },
     ]);
 
     // 狀態用來控制 Modal 開關與當前選擇的優惠券
@@ -21,6 +55,7 @@ function CouponPage() {
         if (tokenBalance >= coupon.cost) {
             consumeTokens(coupon.cost); // 扣除代幣
             setSelectedCoupon(coupon); // 設定當前選擇的優惠券
+            generateBarcode();
             setShowModal(true); // 開啟 Modal
         } else {
             alert("代幣不足，無法兌換此折價券！");
@@ -29,11 +64,22 @@ function CouponPage() {
 
     const handleClose = () => setShowModal(false); // 關閉 Modal
 
+    const generateBarcodeImageURL = (value, scale = 3, height = 50) => {
+        return `https://bwipjs-api.metafloor.com/?bcid=code128&text=${value}&scale=${scale}&height=${height}&backgroundcolor=FFFFFF&barcolor=000000&includetext=false&textcolor=000000`;
+    };
+
+    const generateBarcode = () => {
+        const randomValue = Math.floor(
+            1000000000 + Math.random() * 9000000000
+        ).toString();
+        setBarcodeValue(randomValue);
+    };
+
     return (
         <Container className="mt-5">
-            <h2 className="mb-4 text-center">可兌換的折價券</h2>
+            <h1 className="mb-4 text-center">可兌換的折價券</h1>
             <p className="text-center">
-                <Badge bg="info">目前心理代幣餘額：{tokenBalance} 個</Badge>
+                <Badge>目前心理代幣餘額：{tokenBalance} 個</Badge>
             </p>
             <Row>
                 {coupons.map((coupon) => (
@@ -42,15 +88,22 @@ function CouponPage() {
                             <Card.Body>
                                 <Card.Title>{coupon.store}</Card.Title>
                                 <Card.Text>
-                                    <strong>優惠內容：</strong> {coupon.description}
+                                    <strong>優惠內容：</strong>{" "}
+                                    {coupon.description}
                                     <br />
-                                    <strong>到期日：</strong> 
-                                    <span style={{ color: "red" }}>{coupon.expiry}</span>
+                                    <strong>到期日：</strong>
+                                    <span style={{ color: "red" }}>
+                                        {coupon.expiry}
+                                    </span>
                                     <br />
                                     <strong>消耗代幣：</strong> {coupon.cost} 個
                                 </Card.Text>
                                 <Button
-                                    variant={tokenBalance >= coupon.cost ? "success" : "secondary"}
+                                    variant={
+                                        tokenBalance >= coupon.cost
+                                            ? "primary"
+                                            : "secondary"
+                                    }
                                     disabled={tokenBalance < coupon.cost} // 代幣不足時禁用按鈕
                                     onClick={() => handleRedeem(coupon)}
                                 >
@@ -71,11 +124,22 @@ function CouponPage() {
                     {selectedCoupon && (
                         <>
                             <p>
-                                你已兌換 <strong>{selectedCoupon.store}</strong> 的優惠券：
+                                你已兌換 <strong>{selectedCoupon.store}</strong>{" "}
+                                的優惠券：
                             </p>
                             <p>{selectedCoupon.description}</p>
                             <p>有效期限：{selectedCoupon.expiry}</p>
                             <p>消耗代幣：{selectedCoupon.cost} 個</p>
+
+                            <img
+                                src={generateBarcodeImageURL(
+                                    barcodeValue,
+                                    5,
+                                    5
+                                )} // 設定 scale=4, height=70
+                                alt="條碼"
+                                style={{ maxWidth: "100%", height: "auto" }}
+                            />
                         </>
                     )}
                 </Modal.Body>
@@ -89,4 +153,4 @@ function CouponPage() {
     );
 }
 
-export default CouponPage;
+export default Coupons;
