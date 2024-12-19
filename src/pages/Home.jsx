@@ -24,7 +24,6 @@ function Home() {
                     className="text-center"
                     style={{
                         fontWeight: "900",
-                        color: "#2F4F4F",
                         marginTop: "10px", // 減少間距
                     }}
                 >
@@ -81,7 +80,7 @@ function Home() {
                         fontSize: "18px",
                         boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // 添加陰影
                     }}
-                    onClick={() => navigate("/counsel")}
+                    onClick={() => navigate("/diary")}
                 >
                     開始您的諮詢
                 </Button>
@@ -96,7 +95,6 @@ function Home() {
                 <p
                     style={{
                         fontSize: "0.9rem",
-                        color: "#888",
                         textAlign: "center",
                     }}
                 >

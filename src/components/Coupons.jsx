@@ -51,7 +51,7 @@ function Coupons() {
     const [selectedCoupon, setSelectedCoupon] = useState(null);
 
     // 用戶點擊兌換時觸發的函數
-    const handleRedeem = (coupon) => {
+    const handleRedeem = async (coupon) => {
         if (tokenBalance >= coupon.cost) {
             consumeTokens(coupon.cost); // 扣除代幣
             setSelectedCoupon(coupon); // 設定當前選擇的優惠券
@@ -64,7 +64,7 @@ function Coupons() {
 
     const handleClose = () => setShowModal(false); // 關閉 Modal
 
-    const generateBarcodeImageURL = (value, scale = 3, height = 50) => {
+    const generateBarcodeImageURL =  (value, scale = 3, height = 50) => {
         return `https://bwipjs-api.metafloor.com/?bcid=code128&text=${value}&scale=${scale}&height=${height}&backgroundcolor=FFFFFF&barcolor=000000&includetext=false&textcolor=000000`;
     };
 

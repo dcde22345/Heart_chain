@@ -79,7 +79,6 @@ const MeetingRoom = () => {
       fluid
       className="d-flex flex-column align-items-center vh-100 bg-light"
     >
-      123132
         攝影機選擇器
       <Card className="mt-4 p-3 shadow-sm" style={{ width: "100%", maxWidth: "500px" }}>
         <Card.Title className="text-center fw-bold">選擇攝影機</Card.Title>
