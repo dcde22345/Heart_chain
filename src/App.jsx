@@ -9,6 +9,7 @@ import {
     MeetingRoom,
     UserInfo,
     Tasks,
+    UnlockDashboard
 } from "./pages/PageRouter";
 import { TokenProvider } from "./TokenContext"; // 引入 TokenProvider
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -37,6 +38,9 @@ function App() {
                     <Nav.Link href="/userInfo" style={{ color: "#666" }}>
                         個人
                     </Nav.Link>
+                    <Nav.Link href="/unlock-dashboard" style={{ color: "#666" }}>
+                        心理代幣
+                    </Nav.Link>
                 </Nav>
             </Navbar>
             <Container className="mt-3">
@@ -48,7 +52,7 @@ function App() {
                         <Route path="/diary" element={<Diary />} />
                         <Route path="/tasks" element={<Tasks />} />
                         <Route path="/userInfo" element={<UserInfo />} />
-
+                        <Route path="/unlock-dashboard" element={<UnlockDashboard />} />
                     </Routes>
                 </Router>
             </Container>

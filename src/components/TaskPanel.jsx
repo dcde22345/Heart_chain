@@ -4,9 +4,9 @@ import { Container, Card, ListGroup, Button } from "react-bootstrap";
 function TaskPanel() {
     const [selectedTask, setSelectedTask] = useState(null);
     const tasks = [
-        { name: "跑步：30分鐘，10代幣", type: "running" },
-        { name: "冥想：10分鐘，10代幣", type: "meditation" },
-        { name: "閱讀：30分鐘，5代幣", type: "reading" },
+        { name: "約跑步：30分鐘，10代幣", type: "running" },
+        { name: "冥想發呆：10分鐘，10代幣", type: "meditation" },
+        { name: "閱讀睡覺：30分鐘，5代幣", type: "reading" },
     ];
 
     return (
