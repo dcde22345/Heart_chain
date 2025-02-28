@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Heart Chain
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Heart Chain is a privacy-focused mental health support platform that provides users with an anonymous way to express their feelings, consult with counselors, and complete tasks to improve their well-being. The platform includes various features such as diary logging, anonymous counseling, meeting rooms, and a psychological token system.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Anonymous Counseling**: Users can schedule anonymous consultation sessions and join secure virtual meetings.
+- **Diary Chatbot**: A chatbot-based diary where users can write and receive supportive feedback.
+- **Tasks & Rewards**: Users can complete wellness-related tasks and earn psychological tokens.
+- **Questionnaire**: A section to assess mental health status through simple questionnaires.
+- **Meeting Room**: Secure video conferencing for counseling sessions.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To set up the project locally, follow these steps:
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure you have the following installed:
 
-### `npm run build`
+- Node.js (v14 or later)
+- npm or yarn
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Steps
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```sh
+   git clone https://github.com/your-repo/heart-chain.git
+   cd heart-chain
+   ```
 
-### `npm run eject`
+2. Install dependencies:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```sh
+   npm install
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Start the development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```sh
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   This will launch the application on http://localhost:3000/.
 
-## Learn More
+## Folder Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+/heart-chain
+├── src
+│   ├── components       # UI components
+│   ├── pages            # Main pages
+│   ├── App.jsx          # Root component
+│   ├── PageRouter.jsx   # Routing configuration
+│   ├── index.jsx        # Entry point
+│   ├── styles           # CSS files
+│   └── assets           # Static assets
+├── public               # Public assets
+├── package.json         # Project dependencies
+├── README.md            # Project documentation
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Pages & Routes
 
-### Code Splitting
+- `/` - **Home**
+  - Introduction to the platform
+  - Call-to-action button to start counseling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `/diary` - **Diary Chatbot**
+  - Allows users to chat with a bot and log emotions
+  - Suggests professional help if needed
 
-### Analyzing the Bundle Size
+- `/counsel` - **Anonymous Counseling**
+  - Users can book a time slot for counseling
+  - Secure anonymous environment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `/meeting-room` - **Meeting Room**
+  - Secure video meeting for users and counselors
+  - Camera selection and session controls
 
-### Making a Progressive Web App
+- `/tasks` - **Tasks & Rewards**
+  - Users complete wellness tasks
+  - Progress tracking with a reward system
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `/questionnaire` - **Mental Health Assessment**
+  - Users answer mental health-related questions
+  - Helps assess emotional well-being
 
-### Advanced Configuration
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **deep-live-cam**: Privacy protection for video streaming, url: https://github.com/hacksider/Deep-Live-Cam
+- **React**: Frontend framework
+- **React Router**: Navigation
+- **Bootstrap**: UI styling
